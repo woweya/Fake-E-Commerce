@@ -1,0 +1,352 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-background-header: #E88D67;
+    --white-color: #F3F7EC;
+    --cyan-color: #006989;
+    --darkish-cyan-color: #005C78;
+
+}
+
+header{
+    width: 80%;
+    height: 80vh;
+    margin: 20px auto;
+    background-image: url(https://assets.teenvogue.com/photos/608935ccbfd50693032bb974/16:9/w_1920,c_limit/TeenVoguexWisdomKaye_HEADER.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 20px;
+    box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.backdrop-filter{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+nav{
+    background-color: black;
+}
+
+nav>h1{
+    width: 100%;
+    text-align: center;
+}
+
+nav>ul>li{
+    font-weight: 500;
+}
+
+nav>ul>li>a{
+    text-decoration: none;
+    color: white;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card{
+    background-color: #005C78;
+    width:32rem;
+    height: 250px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.card:nth-child(1){
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgb(100, 2, 2) 35%, rgb(124, 2, 2) 100%);
+}
+
+.card:nth-child(2){
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgb(2, 100, 100) 35%, rgb(2, 124, 124) 100%);
+}
+
+.card:nth-child(3){
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgb(2, 2, 100) 35%, rgb(2, 2, 124) 100%);
+}
+
+
+.card-body{
+    height: 100%;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.left-card-side{
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 50px;
+}
+
+.card:nth-of-type(1) .left-card-side h1 {
+    background-color: salmon;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card:nth-of-type(2) .left-card-side h1 {
+    background-color: rgb(6, 151, 177);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.card:nth-of-type(3) .left-card-side h1 {
+    background-color: rgb(23, 54, 231);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.left-card-side>a{
+    text-decoration: none;
+    animation: all 1s ease-in-out;
+}
+
+.left-card-side>a:hover{
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+
+
+.right-card-side{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+
+.right-card-side{
+    background-image:url('png-clipart-fashion-clothing-model-hugo-boss-dress-celebrities-brown-thumbnail.png');
+    background-position:top center;
+    background-repeat: no-repeat;
+    background-size: 25rem;
+    filter: brightness(1);
+}
+
+.card:nth-of-type(2) .right-card-side{
+    background-image:url('52-524008_women-fashion-model-png-transparent-png.png');
+    background-position:top center;
+    background-repeat: no-repeat;
+    background-size: 23rem;
+    filter: brightness(1);
+}
+
+.card:nth-of-type(3) .right-card-side{
+    background-image:url('sean-o-pry-h-m-model-fashion-clothing-seancharmatz.png');
+    background-position:top center;
+    background-repeat: no-repeat;
+    background-size: 25rem;
+    filter: brightness(1);
+}
+
+.products-limit{
+    width: 84%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.card-product{
+    width: 220px;
+    max-width: 220px;
+
+}
+.card-product>img{
+    width: 225px;
+    max-width: 220px;
+    height: 250px;
+    padding: 15px;
+    max-height: 250px;
+}
+
+.card-product-body{
+    width: 220px;
+    max-width: 220px;
+    background-color: #a3a3a32a;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 0px;
+    text-align: start;
+    padding: 20px;
+}
+
+.card-product-body>h1{
+    width: 100%;
+    max-height: 48px;
+    height: 20px;
+}
+
+.card-product-button{
+    width: 45%;
+    max-width: 45%;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: small;
+    text-align: start;
+    animation: all 2s ease-in-out;
+}
+
+.card-product-button:hover{
+    background-color: #a5a5a5cc;
+    transform: scale(1.1);
+}
+
+.card-product-button:active{
+    transform: scale(1);
+}
+
+.left-side-content{
+    width: 50%;
+    height: 100%;
+    float: left;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.right-side-content{
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.svg-icons{
+    width: 150px;
+    max-width: 150px;
+    height: 100px;
+    max-height: 100px;
+    background-color: #a3a3a32a;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    animation: all 1s ease-in-out;
+}
+
+.svg-icons:hover{
+    transform: scale(1.1);
+    background-color: #e88e67;
+    cursor: pointer;
+}
+
+.svg-icons:active{
+    transform: scale(1);
+    background-color: #db794f;
+    cursor: pointer;
+}
+
+.parallax{
+    background-image: url('young-blonde-woman-black-dress-shopping-white-wall.jpg');
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+    background-attachment: fixed;
+    z-index: 1;
+}
+
+.parallax h1{
+    background-color: #009ccc85;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+}
+
+.btn-primary{
+    background-color: #009ccc7c;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow:  0 0 2px 0 rgba(0, 0, 0, 0.5);
+    animation: all 1s ease-in-out;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 999999;
+}
+
+.btn-primary:hover{
+    background-color: #009ccc;
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
+
+footer{
+    background-color: black;
+}
+
+.left-footer{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.right-footer{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+footer ul{
+    margin: 0;
+    padding: 0;
+}
+
+
+footer ul li{
+    color: white;
+    margin: 0;
+    padding: 0;
+}
