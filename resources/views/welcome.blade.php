@@ -46,7 +46,9 @@
     </div>
 
     <section class="w-full mx-auto mt-5 text-center flex items-center justify-center flex-col mb-12 relative">
-        <h1 class="text-3xl font-bold mb-10">Featured Products</h1>
+        <h1 class="text-3xl font-bold ">Featured Products</h1>
+        <hr class="w-[12%] border-black border-[1px]">
+        <hr class="w-[5%] border-black  border-[1px] mb-10">
         <a href="" class="absolute top-[2%] right-[14%] text-black font-semibold text-sm  hover:underline">View
             all products <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
@@ -54,9 +56,6 @@
             </svg>
         </a>
         <div class="products-limit ">
-            @if (count($data) == 0)
-                <p>No products found</p>
-            @else
                 @foreach ($data as $product)
                     <div class="card-product">
                         <img src="{{ $product['image'] }}" alt="">
@@ -71,7 +70,6 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
         </div>
     </section>
     <div class="w-full flex flex-col items-center justify-center">

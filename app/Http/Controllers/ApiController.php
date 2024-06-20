@@ -32,4 +32,22 @@ class ApiController extends Controller
 
     }
 
+    public function showAll()
+    {
+        try{
+        $productResponse = Http::get('https://fakestoreapi.com/products');
+        $data= $productResponse->json();
+
+        $categoryResponse = Http::get('https://fakestoreapi.com/products/categories');
+        $categories= $categoryResponse->json();
+        return view('products', compact('data', 'categories'));
+
+        }catch(\Exception $e){
+            $e = $e->getMessage();
+
+            return view('products', compact('e'));
+        }
+    }
+
+
 }
