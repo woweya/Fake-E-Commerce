@@ -374,3 +374,153 @@ footer ul li{
     font-size: small;
     box-shadow:  0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
+
+
+.card-product.cursor-pointer{
+    animation: all 1s ease-in-out;
+}
+
+.card-product.cursor-pointer:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#single-product{
+    background-color: #d8d8d8;
+}
+
+.left-side-single-product{
+
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.right-side-single-product{
+    width: 30%;
+    height: 100%;
+    float: right;
+}
+
+.left-side{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.right-side{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.btn-shop{
+    background-color: #3535357c;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow:  0 0 2px 0 rgba(0, 0, 0, 0.5);
+    animation: all 1s ease-in-out;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 999999;
+    width: 80%;
+    text-align: center;
+}
+
+.btn-shop:hover{
+    background-color: #353535;
+    transform: scale(1.1);
+    text-decoration: underline;
+    color: white;
+}
+
+#breadcrumb>li>a{
+    text-decoration: none;
+    text-align: center;
+    animation: 1s ease-in-out;
+    display: inline-block;
+}
+
+#breadcrumb>li{
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    position: relative;
+    font-weight: 600;
+}
+
+#breadcrumb > li > a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #000;
+    transition: width 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out;
+}
+
+#breadcrumb > li > a:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+#back-button:hover{
+    cursor: pointer;
+    transform: scale(1.6);
+}
+
+#back-button{
+    animation: 1s ease-in-out;
+}
+
+#back-button:active{
+    transform: scale(1.2);
+}
+
+#description>p::first-letter{
+    text-transform: capitalize;
+}
+
+.fixed-size-image {
+    width: 300px; /* Fissa la larghezza desiderata */
+    height: 300px; /* Fissa l'altezza desiderata */
+    object-fit: contain; /* Adatta l'immagine all'interno del contenitore mantenendo le proporzioni */
+
+}
+
+ul.flex.items-center.gap-4.container>li {
+    position: relative; /* Per posizionare il pseudo-elemento in relazione all'elemento li */
+}
+
+ul.flex.items-center.gap-4.container>li:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+ul.flex.items-center.gap-4.container>li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Regola questa distanza in base al tuo design */
+    width: 0;
+    height: 2px; /* Spessore della linea */
+    background-color: rgb(255, 255, 255); /* Colore della linea */
+    transition: width 0.3s ease-in-out; /* Effetto di transizione */
+}
+
+ul.flex.items-center.gap-4.container>li:hover::after {
+    width: 100%;
+}

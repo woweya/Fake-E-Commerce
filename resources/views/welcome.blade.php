@@ -49,7 +49,7 @@
         <h1 class="text-3xl font-bold ">Featured Products</h1>
         <hr class="w-[12%] border-black border-[1px]">
         <hr class="w-[5%] border-black  border-[1px] mb-10">
-        <a href="" class="absolute top-[2%] right-[14%] text-black font-semibold text-sm  hover:underline">View
+        <a href="{{ route('products') }}" class="absolute top-[2%] right-[14%] text-black font-semibold text-sm  hover:underline">View
             all products <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
@@ -167,7 +167,7 @@
                 @foreach ($categories as $category)
                 <div class="flex w-full flex-col justify-center items-center">
                     <div class="svg-icons">
-                    {!! $svgIcons[$category] !!}
+                    <a href="/products?categories={{ $category }}">{!! $svgIcons[$category] !!}</a>
                 </div>
                 <p class="text-lg font-semibold capitalize">{{ $category }}</p>
                 </div>
@@ -242,5 +242,7 @@
         </ul>
     </div>
 </div>
+
 </footer>
+
 </x-layout>

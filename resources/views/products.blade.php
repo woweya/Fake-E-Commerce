@@ -17,7 +17,7 @@
                     <p class="font-bold text-sm text-white mb-4 underline ">Price</p>
                     <div class="relative mb-6">
                         <label for="price-range-input" class="sr-only">Price range</label>
-                        <input id="price-range-input" type="range" value="500" min="8" max="1000" class="price-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                        <input id="price-range-input" type="range" value="1000" min="8" max="1000" class="price-range w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">Min ($8)</span>
                         <span id="price-range-value" class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/4 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6 font-bold">$500</span>
                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">Max ($1000)</span>
@@ -45,7 +45,7 @@
         <div class="right-side-products">
             <div class="flex flex-wrap justify-center items-center">
                 @foreach ($data as $product)
-                    <div class="card-product"
+                    <div id="products-{{ $product['id'] }}" onclick="seeProduct({{ $product['id'] }})" class="card-product cursor-pointer"
                         data-category="{{ $product['category'] }}"
                         data-price="{{ $product['price'] }}"
                         data-rating="{{ $product['rating']['rate'] }}">
@@ -69,7 +69,9 @@
             </div>
         </div>
         <script>
-
-            </script>
+            function seeProduct(id) {
+                window.location.href = '/products/'+ id;
+            }
+        </script>
     </main>
 </x-layout>
