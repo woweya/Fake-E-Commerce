@@ -64,7 +64,6 @@ class ApiController extends Controller
             // Se si verifica un errore, gestisci l'eccezione
             $errorMessage = 'Si è verificato un errore durante il recupero dei dati.';
 
-            \Log::error('Errore API: ' . $e->getMessage());
 
             // Passa un messaggio di errore alla vista
             return view('products', compact('errorMessage'));
