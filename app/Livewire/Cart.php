@@ -10,6 +10,7 @@ use Livewire\Attributes\On;
 class Cart extends Component
 {
 
+
     public $cart = [];
 
     public function render()
@@ -17,16 +18,11 @@ class Cart extends Component
         return view('livewire.cart');
     }
 
-    public function mount(){
-
-        $this->cart = Session::get('cart-products', []);
-    }
 
     #[On('addToCart')]
-    public function add($product){
-        dd($product);
-
-    }
-
+    public function add(array $product){
+         // Append the product to the cart
+    $this->cart[] = $product;
+}
 
 }

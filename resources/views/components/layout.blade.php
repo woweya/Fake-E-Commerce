@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>E-commerce</title>
+    @livewireStyles
 </head>
 <body >
     <x-navbar></x-navbar>
@@ -14,5 +15,6 @@
     {{ $slot }}
 
     @livewireScripts
+
 </body>
 </html>

@@ -1,0 +1,3 @@
+Allora showOne non mostra la vista corretta poichè nel controller Livewire non arriva l'ID
+Il metodo dell'ID è ancora da definire nella vista di products (JS)
+Dopo di che abbiamo un componente livewire per la visualizzazione singolo prodotto e, aggiunta di un prodotto nella cart tramite invio eventi in Livewire

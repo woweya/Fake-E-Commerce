@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
 class ApiController extends Controller
@@ -70,28 +71,25 @@ class ApiController extends Controller
         }
     }
 
+        public function showOne($id)
+        {
+            Log::info('showOne method called with id: ' . $id);
+            try{
 
+                // Esegui la richiesta API per ottenere il prodotto specifico
+                $productResponse = Http::get('https://fakestoreapi.com/products/'. $id);
+                // Verifica se la risposta è stata ricevuta correttamente
+                if ($productResponse->successful()) {
+                    $products = $productResponse->json();
+                    return view('product', compact('products'));
+                } else {
+                    // Gestisci il caso in cui la richiesta fallisca
+                    abort(404, 'Product not found');
+                }
 
-
-
-
-
-
-    public function showOne($id)
-    {
-        // Esegui la richiesta API per ottenere il prodotto specifico
-        $productResponse = Http::get('https://fakestoreapi.com/products/'.$id);
-
-        // Verifica se la risposta è stata ricevuta correttamente
-        if ($productResponse->successful()) {
-            $products = $productResponse->json();
-
-            // Restituisci la vista con i dati del prodotto
-            return view('product-single', compact('products'));
-        } else {
-            // Gestisci il caso in cui la richiesta fallisca
-            return abort(404, 'Product not found');
+            }catch(\Exception $e){
+                $e = $e->getMessage();
+                return view('welcome', compact('e'));
+            }
         }
-    }
-
 }
