@@ -32,12 +32,6 @@
                     </div>
                     <form class="w-full mb-1" id="quantity-form" wire:submit.prevent="addToCart">
 
-                        <input type="hidden" id="product_id" wire:model="product" value="{{ $products['id'] }}">
-                        <input type="hidden" id="product_name" wire:model="product" value="{{ $products['title'] }}">
-                        <input type="hidden" id="product_price" wire:model="product" value="{{ $products['price'] }}">
-                        <input type="hidden" id="product_image" wire:model="product" value="{{ $products['image'] }}">
-
-
                         <div class="right-side ">
                             <button type="submit" class="btn-shop">Add to cart</button>
                         </div>
@@ -52,7 +46,7 @@
                                             stroke-width="2" d="M1 1h16" />
                                     </svg>
                                 </button>
-                                <input type="text" name="quantity" wire:model="product" id="quantity-input" data-input-counter
+                                <input type="text" name="quantity" wire:model="quantity" id="quantity-input" data-input-counter
                                     data-input-counter-min="1" data-input-counter-max="50"
                                     aria-describedby="helper-text-explanation"
                                     class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

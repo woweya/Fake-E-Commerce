@@ -20,9 +20,32 @@ class Cart extends Component
 
 
     #[On('addToCart')]
-    public function add(array $product){
-         // Append the product to the cart
-    $this->cart[] = $product;
+    public function add(){
+       $this->cart = Session::get('Cart', []);
+
+    }
+
+public function increment(){
+    $this->cart['products']['quantity']++;
+}
+
+public function decrement(){
+    $this->cart['products']['quantity']--;
+
+    if($this->cart['products']['quantity'] == 0){
+        $this->cart = [];
+    }
+
+
+}
+
+public function remove($index)
+{
+
+      // Retrieve the current cart from the session
+      $cart = Session::get('Cart', []);
+    dd($cart);
+
 }
 
 }

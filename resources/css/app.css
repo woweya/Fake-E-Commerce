@@ -524,3 +524,58 @@ ul.flex.items-center.gap-4.container>li::after {
 ul.flex.items-center.gap-4.container>li:hover::after {
     width: 100%;
 }
+
+
+.quantity-product {
+    display: flex;
+    align-items: center;
+      justify-content: flex-start;
+    gap: 0;
+}
+
+.left-side-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.right-side-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 100%;
+    margin: 0;
+    gap: 0 !important; /* Rimuove il gap tra i pulsanti */
+}
+
+.right-side-quantity>button {
+    width: 20px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+#quantity{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#increment{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#decrement{
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top: 0px;
+}
