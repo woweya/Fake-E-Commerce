@@ -10,5 +10,4 @@ Route::get('/products', [App\Http\Controllers\ApiController::class, 'showAll'])-
 
 Route::get('/product/{id}', [App\Http\Controllers\ApiController::class, 'showOne'])->name('product');
 
-
 Route::get('/cart', [Cart::class, 'viewCart'])->name('cart.view');

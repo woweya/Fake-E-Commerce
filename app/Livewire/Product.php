@@ -17,6 +17,7 @@ class Product extends Component
 
     public function mount(){
 
+
         $this->products['quantity'] = $this->quantity;
         $this->cart = Session::get('Cart', []);
     }
@@ -31,16 +32,24 @@ class Product extends Component
 
         $productExists = false;
 
-        foreach ($this->cart as $key => $item) {
-            if ($item['id'] == $this->products['id']) {
-                $productExists = true;
-                $this->cart[$key]['quantity'] += $this->quantity;
-                break;
+
+        if (isset($this->cart['products'])) {
+            foreach ($this->cart['products'] as $key => $item) {
+
+                if ($item == $this->products['id']) {
+                    $productExists = true;
+                    $this->cart['products'][$key]['quantity'] += $this->quantity;
+                    break;
+                }
             }
+        } else {
+            $this->cart['products'] = [];
         }
 
         if(!$productExists) {
-            $this->cart['products'] = $this->products;
+            $this->products['quantity'] = $this->quantity;
+            $this->cart['products'][] = $this->products;
+
         }
 
         Session::put('Cart', $this->cart);
@@ -48,7 +57,7 @@ class Product extends Component
 
         $this->dispatch('addToCart');
 
-    session()->flash('success', 'Product added to cart');
+        session()->flash('success', 'Product added to cart');
     }
 
     public function incrementQuantity()

@@ -13,6 +13,11 @@ class Cart extends Component
 
     public $cart = [];
 
+    public function mount()
+    {
+        $this->cart =  Session::get('Cart', []);
+    }
+
     public function render()
     {
         return view('livewire.cart');
@@ -20,32 +25,71 @@ class Cart extends Component
 
 
     #[On('addToCart')]
-    public function add(){
-       $this->cart = Session::get('Cart', []);
-
+    public function add()
+    {
+        $this->cart = Session::get('Cart', []);
     }
 
-public function increment(){
-    $this->cart['products']['quantity']++;
-}
+    public function increment($id)
+    {
+        foreach ($this->cart['products'] as $key => $product) {
+            if ($product['id'] == $id) {
+                $this->cart['products'][$key]['quantity']++;
+                break;
+            }
+        }
+        Session::put('Cart', $this->cart);
+    }
 
-public function decrement(){
-    $this->cart['products']['quantity']--;
+    public function decrement($id)
+    {
+        foreach ($this->cart['products'] as $key => $product) {
+            if ($product['id'] == $id) {
+                $this->cart['products'][$key]['quantity']--;
+                if ($this->cart['products'][$key]['quantity'] <= 0) {
+                    unset($this->cart['products'][$key]);
+                }
+                break;
+            }
+        }
+        $this->cart['products'] = array_values($this->cart['products']);
+        Session::put('Cart', $this->cart);
+    }
 
-    if($this->cart['products']['quantity'] == 0){
-        $this->cart = [];
+    public function refreshCart()
+    {
+        $this->cart = Session::get('Cart', []);
     }
 
 
-}
+    public function remove($index)
+    {
 
-public function remove($index)
-{
+        // Retrieve the current cart from the session
+        $cart = Session::get('Cart', []);
+        // Check if the cart has products
+        if (isset($cart['products'])) {
+            //Filter the products array to remove the product with the given index
+            $cart['products'] = array_filter($cart['products'], function ($product) use ($index) {
+                // Ensure $product is an array and has an 'id' key
+                return is_array($product) && isset($product['id']) && $product['id'] != $index;
+            });
 
-      // Retrieve the current cart from the session
-      $cart = Session::get('Cart', []);
-    dd($cart);
+            //Reindex the array to avoid issues with non-sequential keys
+            $cart['products'] = array_values($cart['products']);
 
-}
 
+            // If no products left, remove the 'products' key from the cart
+            if (empty($cart['products'])) {
+                unset($cart['products']);
+            }
+        }
+        //Save the updated cart back to the session
+
+        Session::put('Cart', $cart);
+
+        $this->cart = $cart;
+
+        $this->refreshCart();
+    }
 }

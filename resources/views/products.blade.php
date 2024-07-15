@@ -1,5 +1,5 @@
 <x-layout>
-    <main class="w-full mx-auto text-start flex items-start justify-start mb-12 p-10 rounded">
+    <main class="w-full mx-auto text-start flex items-start justify-start mb-12 p-10 rounded" style="min-height: 70.8vh">
         <div class="left-side-products-tag">
             <div class="tag-container">
                 <p class="font-bold text-sm text-white  mb-4 underline ">Categories</p>
@@ -72,7 +72,7 @@
                                 @endphp
 
                                 <p class="text-gray-500 text-sm font-light capitalize">Rating: {{ $stars }} ({{ $numberRate }})</p>
-                                <button class="card-product-button">Add to cart</button>
+                                <button class="card-product-button" id="add-to-cart">Add to cart</button>
                             </div>
                         </div>
                     </a>
@@ -86,8 +86,18 @@
 
 
             //Product filtering by tags
-            document.addEventListener('DOMContentLoaded', function() {
-    function updateArticles() {
+    document.addEventListener('DOMContentLoaded', function() {
+
+        document.addEventListener('livewire:initialized', function() {
+        const addToCart = document.getElementById('add-to-cart');
+        addToCart.addEventListener('click', function() {
+            Livewire.dispatchTo('product', 'addToCart');
+        });
+    });
+
+
+
+        function updateArticles() {
         var selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(
             checkbox => checkbox.value
         );

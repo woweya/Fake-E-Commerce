@@ -71,6 +71,9 @@ class ApiController extends Controller
         }
     }
 
+
+
+
         public function showOne($id)
         {
             Log::info('showOne method called with id: ' . $id);
