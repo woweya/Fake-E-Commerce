@@ -1,5 +1,6 @@
 <div>
     <main id="single-product" class="w-full mx-auto text-start flex items-start justify-start p-10 rounded">
+
         <button id="back-button"><a href="/products"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                     fill="currentColor" class="size-6">
                     <path fill-rule="evenodd"
@@ -7,7 +8,20 @@
                         clip-rule="evenodd" />
                 </svg>
             </a></button>
-        <div class="container mx-auto mt-10">
+        <div class="container mx-auto mt-10 relative">
+                <div role="alert" id="alert" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);"
+                    class="alert alert-success bg-green-200 dark:bg-green-600 text-white p-4 rounded absolute top-0 right-0 @if (session()->has('success'))
+                    visible @else hidden @endif">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    @if (session()->has('success'))
+                    <span> {{ session('success') }}</span>
+                    @endif
+                </div>
+
             <div class="left-side-single-product w-1/2 flex items-center justify-center">
                 <img src="{{ $products['image'] }}" class="fixed-size-image" alt="{{ $products['title'] }}">
 
@@ -46,8 +60,8 @@
                                             stroke-width="2" d="M1 1h16" />
                                     </svg>
                                 </button>
-                                <input type="text" name="quantity" wire:model="quantity" id="quantity-input" data-input-counter
-                                    data-input-counter-min="1" data-input-counter-max="50"
+                                <input type="text" name="quantity" wire:model="quantity" id="quantity-input"
+                                    data-input-counter data-input-counter-min="1" data-input-counter-max="50"
                                     aria-describedby="helper-text-explanation"
                                     class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="999" value='{{ $quantity }}' required />
@@ -98,28 +112,39 @@
 
 </section>
 
-<script>
-    document.addEventListener('livewire:initialized', function() {
-        const tabs = document.querySelectorAll('#breadcrumb a');
-        console.log(tabs);
-        const contentSections = document.querySelectorAll('.content');
-        console.log(contentSections);
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                const sectionId = tab.getAttribute('data-section');
-                contentSections.forEach(section => {
-                    if (section.id === sectionId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-                tabs.forEach(tab => tab.parentElement.classList.remove('active'));
-                tab.parentElement.classList.add('active');
-            });
-        });
+@script
+    <script>
+        document.addEventListener('livewire:initialized', function() {
+            Livewire.on('addToCart', () => {
+                const alert = document.getElementById('alert');
+                alert.classList.remove('hidden');
+                setTimeout(() => {
+                    alert.classList.add('hidden');
+                    alert.classList.remove('visible');
+                }, 3000);
+         });
 
-    });
-</script>
+            const tabs = document.querySelectorAll('#breadcrumb a');
+            console.log(tabs);
+            const contentSections = document.querySelectorAll('.content');
+            console.log(contentSections);
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = tab.getAttribute('data-section');
+                    contentSections.forEach(section => {
+                        if (section.id === sectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                    tabs.forEach(tab => tab.parentElement.classList.remove('active'));
+                    tab.parentElement.classList.add('active');
+                });
+            });
+
+        });
+    </script>
+@endscript
 </div>

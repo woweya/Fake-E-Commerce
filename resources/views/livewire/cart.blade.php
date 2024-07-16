@@ -29,6 +29,9 @@
         </div>
         <hr class="border-gray-300 border-[0.5px] w-full">
         @endforeach
+        <div class="flex w-full justify-start items-center">
+            <p class="text-xl font-light text-sm">Checkout: <span class="font-semibold text-lg">${{$totalPrice }}</span> </p>
+        </div>
     </ul>
     @else
     <p>Your cart is empty.</p>

@@ -11,10 +11,12 @@ class Cart extends Component
 {
 
 
+    public $totalPrice;
     public $cart = [];
 
     public function mount()
     {
+        $this->totalPrice =  $this->calculateTotalPrice();
         $this->cart =  Session::get('Cart', []);
     }
 
@@ -28,6 +30,7 @@ class Cart extends Component
     public function add()
     {
         $this->cart = Session::get('Cart', []);
+        $this->totalPrice = $this->calculateTotalPrice();
     }
 
     public function increment($id)
@@ -39,6 +42,7 @@ class Cart extends Component
             }
         }
         Session::put('Cart', $this->cart);
+        $this->totalPrice = $this->calculateTotalPrice();
     }
 
     public function decrement($id)
@@ -54,11 +58,16 @@ class Cart extends Component
         }
         $this->cart['products'] = array_values($this->cart['products']);
         Session::put('Cart', $this->cart);
+
+        $this->totalPrice = $this->calculateTotalPrice();
     }
 
     public function refreshCart()
     {
         $this->cart = Session::get('Cart', []);
+
+        $this->totalPrice = $this->calculateTotalPrice();
+
     }
 
 
@@ -91,5 +100,21 @@ class Cart extends Component
         $this->cart = $cart;
 
         $this->refreshCart();
+    }
+
+
+    private function calculateTotalPrice()
+    {
+
+        $total = 0;
+        $cart = Session::get('Cart', []);
+
+        if (isset($cart['products'])) {
+            foreach ($cart['products'] as $product) {
+                $total += $product['price'] * $product['quantity'];
+            }
+        }
+        return $total;
+
     }
 }

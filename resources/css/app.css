@@ -579,3 +579,19 @@ ul.flex.items-center.gap-4.container>li:hover::after {
     border-bottom-left-radius: 0px;
     border-top: 0px;
 }
+
+
+#alert{
+ animation: fade-in-right 1s ease-in-out;
+}
+
+@keyframes fade-in-right{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

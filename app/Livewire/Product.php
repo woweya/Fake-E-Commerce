@@ -29,14 +29,11 @@ class Product extends Component
 
     public function addToCart()
     {
-
         $productExists = false;
-
 
         if (isset($this->cart['products'])) {
             foreach ($this->cart['products'] as $key => $item) {
-
-                if ($item == $this->products['id']) {
+                if ($item['id'] == $this->products['id']) {
                     $productExists = true;
                     $this->cart['products'][$key]['quantity'] += $this->quantity;
                     break;
@@ -46,14 +43,12 @@ class Product extends Component
             $this->cart['products'] = [];
         }
 
-        if(!$productExists) {
+        if (!$productExists) {
             $this->products['quantity'] = $this->quantity;
             $this->cart['products'][] = $this->products;
-
         }
 
         Session::put('Cart', $this->cart);
-
 
         $this->dispatch('addToCart');
 

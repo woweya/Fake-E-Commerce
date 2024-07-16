@@ -9,7 +9,11 @@
     <ul class="flex items-center gap-4 container">
         @php
 
-            $counted = count(Session::get('Cart', ['products' => []]));
+            $cart = Session::get('Cart', ['products' => []]);
+            $counted = 0;
+            if (isset($cart['products'])) {
+                $counted = count($cart['products']);
+            }
 
         @endphp
         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
